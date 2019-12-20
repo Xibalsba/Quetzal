@@ -1,9 +1,17 @@
 <?php
 
-class Quetzal{
+require_once "Views.php";
 
-  public function fly(){
-    include "views/quetzal.view.php";
+class Quetzal{
+  
+  static public function fly(){
+    if (isset($_GET["uri"])) {
+      $link = $_GET["uri"];
+    } else {
+      $link = "quetzal";
+    }
+    $respuesta = View::render($link);
+    include $respuesta;
   }
 }
 
